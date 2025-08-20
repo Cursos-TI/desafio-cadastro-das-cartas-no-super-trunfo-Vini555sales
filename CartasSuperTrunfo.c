@@ -12,7 +12,7 @@ int main() {
 
     #pragma region Valores da Carta1
     char firstCardCityName[50];
-    int firstCardCityCode;
+    char firstCardCityCode[3];
     int firstCardPopulationValue;
     float firstCardAreaValue;
     float firstCardPIBValue;
@@ -22,7 +22,7 @@ int main() {
 
     #pragma region Valoed da Carta2
     char secondCardCityName[50];
-    int secondCardCityCode;
+    char secondCardCityCode[3];
     int secondCardPopulationValue;
     float secondCardAreaValue;
     float secondCardPIBValue;
@@ -40,7 +40,7 @@ int main() {
     scanf(" %s", &firstCardCityName);
 
     printf("\n Digite o código da sua cidade: \n");
-    scanf("%d", &firstCardCityCode);
+    scanf("%s", &firstCardCityCode);
 
     printf("\nDigite a população da sua cidade: \n");
     scanf("%d", &firstCardPopulationValue);
@@ -62,7 +62,7 @@ int main() {
     scanf(" %s", &secondCardCityName);
 
     printf("\n Digite o código da sua cidade: \n");
-    scanf("%d", &secondCardCityCode);
+    scanf("%s", &secondCardCityCode);
 
     printf("\nDigite a população da sua cidade: \n");
     scanf("%d", &secondCardPopulationValue);
@@ -86,7 +86,7 @@ int main() {
 
     printf("\n Carta 1");
     printf("\nA sua cidade é: %s \n", firstCardCityName);
-    printf("O código da cidade é: %d \n", firstCardCityCode);
+    printf("O código da cidade é: %s \n", firstCardCityCode);
     printf("A população da cidade é: %d \n", firstCardPopulationValue);
     printf("A área da cidade é: %2.f \n", firstCardAreaValue);
     printf("O PIB da cidade é: %2.f \n", firstCardPIBValue);
@@ -98,7 +98,7 @@ int main() {
 
     printf("\n Carta 2");
     printf("\nA sua cidade é: %s \n", secondCardCityName);
-    printf("O código da cidade é: %d \n", secondCardCityCode);
+    printf("O código da cidade é: %s \n", secondCardCityCode);
     printf("A população da cidade é: %d \n", secondCardPopulationValue);
     printf("A área da cidade é: %2.f \n", secondCardAreaValue);
     printf("O PIB da cidade é: %2.f \n", secondCardPIBValue);
