@@ -13,9 +13,10 @@ float DivideNumbers(float a, float b)
     return result;
 }
 
-void ShowCardAttributes(char cardName[], char cityName[], char cardCode[], int population, float area, float pib, int touristPoint)
+void ShowCardAttributes(char cardName[], char state, char cityName[], char cardCode[], int population, float area, float pib, int touristPoint)
 {
     printf("\n %s", cardName);
+    printf("\n O Estado é: %c", state);
     printf("\nA sua cidade é: %s \n", cityName);
     printf("O código da cidade é: %S \n", cardCode);
     printf("A população da cidade é: %d \n", population);
@@ -31,6 +32,7 @@ int main() {
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
     
     #pragma region Valores da Carta1
+    char firstCardState;
     char firstCardCityName[50];
     char firstCardCityCode[50];
     int firstCardPopulationValue;
@@ -41,6 +43,7 @@ int main() {
     #pragma endregion
 
     #pragma region Valoed da Carta2
+    char secondCardState;
     char secondCardCityName[50];
     char secondCardCityCode[50];
     int secondCardPopulationValue;
@@ -56,6 +59,10 @@ int main() {
     #pragma region Atribuicoes da Carta1
     
     printf("Carta1\n");
+
+    printf("Digite A letra do seu estado: \n");
+    scanf(" %c", &firstCardState);
+
     printf("Digite o nome da sua cidade: \n");
     scanf(" %s", &firstCardCityName);
 
@@ -79,7 +86,12 @@ int main() {
     #pragma endregion
 
     #pragma region Atribuicoes da Carta2
+
     printf("\nCarta2\n");
+
+    printf("Digite A letra do seu estado: \n");
+    scanf(" %c", &secondCardState);
+
     printf("Digite o nome da sua cidade: \n");
     scanf(" %s", &secondCardCityName);
 
@@ -106,8 +118,8 @@ int main() {
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 
-    ShowCardAttributes("Carta 1", firstCardCityName, firstCardCityCode, firstCardPopulationValue, firstCardAreaValue, firstCardPIBValue, firstCardTouristPoints);
-    ShowCardAttributes("Carta 2", secondCardCityName, secondCardCityCode, secondCardPopulationValue, secondCardAreaValue, secondCardPIBValue, secondCardTouristPoints);
+    ShowCardAttributes("Carta 1", firstCardState, firstCardCityName, firstCardCityCode, firstCardPopulationValue, firstCardAreaValue, firstCardPIBValue, firstCardTouristPoints);
+    ShowCardAttributes("Carta 2", secondCardState, secondCardCityName, secondCardCityCode, secondCardPopulationValue, secondCardAreaValue, secondCardPIBValue, secondCardTouristPoints);
 
     printf("\nQue a batalha Comece!\n\n");
     return 0;
