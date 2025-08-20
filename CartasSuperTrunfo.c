@@ -100,7 +100,7 @@ int main() {
     printf("\nA sua cidade é: %s \n", secondCardCityName);
     printf("O código da cidade é: %s \n", secondCardCityCode);
     printf("A população da cidade é: %d \n", secondCardPopulationValue);
-    printf("A área da cidade é: %2.f \n", secondCardAreaValue);
+    printf("A área da cidade é:%2.f km quadrados \n", secondCardAreaValue);
     printf("O PIB da cidade é: %2.f \n", secondCardPIBValue);
     printf("A quantidade de pontos turísticos é: %d \n\n", secondCardTouristPoints);
 
