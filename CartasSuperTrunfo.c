@@ -6,13 +6,33 @@
 // Siga os comentários para implementar cada parte do desafio.
 //Teste larissa
 
+float DivideNumbers(float a, float b)
+{
+    float result = a / b;
+
+    return result;
+}
+
+void ShowCardAttributes(char cardName[], char cityName[], char cardCode[], int population, float area, float pib, int touristPoint)
+{
+    printf("\n %s", cardName);
+    printf("\nA sua cidade é: %s \n", cityName);
+    printf("O código da cidade é: %S \n", cardCode);
+    printf("A população da cidade é: %d \n", population);
+    printf("A área da cidade é:%.2f km quadrados \n", area);
+    printf("O PIB da cidade é: %.2f \n", pib);
+    printf("A quantidade de pontos turísticos é: %d \n", touristPoint);
+    printf("A densidade da cidade é: %.2f\n", DivideNumbers(population, area));
+    printf("O PIB per capita da cidade é: %.2f\n", DivideNumbers(pib, population));
+}
+
 int main() {
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-
+    
     #pragma region Valores da Carta1
     char firstCardCityName[50];
-    char firstCardCityCode[3];
+    char firstCardCityCode[50];
     int firstCardPopulationValue;
     float firstCardAreaValue;
     float firstCardPIBValue;
@@ -22,7 +42,7 @@ int main() {
 
     #pragma region Valoed da Carta2
     char secondCardCityName[50];
-    char secondCardCityCode[3];
+    char secondCardCityCode[50];
     int secondCardPopulationValue;
     float secondCardAreaValue;
     float secondCardPIBValue;
@@ -54,6 +74,8 @@ int main() {
     printf("\nDigite o número de pontos turísticos da sua cidade: \n");
     scanf("%d", &firstCardTouristPoints);
 
+   
+
     #pragma endregion
 
     #pragma region Atribuicoes da Carta2
@@ -76,36 +98,17 @@ int main() {
     printf("\nDigite o número de pontos turísticos da sua cidade: \n");
     scanf("%d", &secondCardTouristPoints);
 
+    
+
     #pragma endregion
 
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 
-    #pragma region Resultado da Primeira Carta
+    ShowCardAttributes("Carta 1", firstCardCityName, firstCardCityCode, firstCardPopulationValue, firstCardAreaValue, firstCardPIBValue, firstCardTouristPoints);
+    ShowCardAttributes("Carta 2", secondCardCityName, secondCardCityCode, secondCardPopulationValue, secondCardAreaValue, secondCardPIBValue, secondCardTouristPoints);
 
-    printf("\n Carta 1");
-    printf("\nA sua cidade é: %s \n", firstCardCityName);
-    printf("O código da cidade é: %s \n", firstCardCityCode);
-    printf("A população da cidade é: %d \n", firstCardPopulationValue);
-    printf("A área da cidade é: %2.f \n", firstCardAreaValue);
-    printf("O PIB da cidade é: %2.f \n", firstCardPIBValue);
-    printf("A quantidade de pontos turísticos é: %d \n", firstCardTouristPoints);
-
-    #pragma endregion
-
-    #pragma region Resultado da Segunda Carta
-
-    printf("\n Carta 2");
-    printf("\nA sua cidade é: %s \n", secondCardCityName);
-    printf("O código da cidade é: %s \n", secondCardCityCode);
-    printf("A população da cidade é: %d \n", secondCardPopulationValue);
-    printf("A área da cidade é:%2.f km quadrados \n", secondCardAreaValue);
-    printf("O PIB da cidade é: %2.f \n", secondCardPIBValue);
-    printf("A quantidade de pontos turísticos é: %d \n\n", secondCardTouristPoints);
-
-    #pragma endregion
-
-    printf("Que a batalha Comece!\n\n");
+    printf("\nQue a batalha Comece!\n\n");
     return 0;
 }
