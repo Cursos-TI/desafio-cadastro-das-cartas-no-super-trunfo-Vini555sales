@@ -24,7 +24,7 @@ void ShowCardAttributes(char cardName[], char state, char cityName[], char cardC
     printf("O PIB da cidade é: %.2f \n", pib);
     printf("A quantidade de pontos turísticos é: %d \n", touristPoint);
     printf("A densidade da cidade é: %.2f\n", DivideNumbers(population, area));
-    printf("O PIB per capita da cidade é: %.2f\n", DivideNumbers(pib, population));
+    printf("O PIB per capita da cidade é: %f\n", DivideNumbers(pib, population));
 }
 
 int main() {
