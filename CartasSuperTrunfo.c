@@ -8,7 +8,7 @@ struct Card
     char cityCode[12];
 
     char cityName[50];
-    int population;
+    unsigned int population;
     float area;
     float pib;
     int touristPoints;
@@ -26,7 +26,7 @@ float DivideNumbers(float a, float b)
     return result;
 }
 
-float CalculateSupewPower(float population, float area, float pib, float touristPoint, float pibPerCapita, float populationDensity)
+float CalculateSuperPower(float population, float area, float pib, float touristPoint, float pibPerCapita, float populationDensity)
 {
     float result = population + area + pib + touristPoint + pibPerCapita - populationDensity;
 
