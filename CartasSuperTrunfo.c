@@ -1,10 +1,23 @@
 #include <stdio.h>
+#include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+struct Card
+{
+    char cardName[12];
+    char stateName;
+    char cityCode[12];
+
+    char cityName[50];
+    int population;
+    float area;
+    float pib;
+    int touristPoints;
+
+    float pibPerCapita;
+    float populationDensity;
+
+    float superPower;
+};
 
 float DivideNumbers(float a, float b)
 {
@@ -13,114 +26,92 @@ float DivideNumbers(float a, float b)
     return result;
 }
 
-void ShowCardAttributes(char cardName[], char state, char cityName[], char cardCode[], int population, float area, float pib, int touristPoint)
+float CalculateSupewPower(float population, float area, float pib, float touristPoint, float pibPerCapita, float populationDensity)
 {
-    printf("\n %s", cardName);
-    printf("\n O Estado é: %c", state);
-    printf("\nA sua cidade é: %s \n", cityName);
-    printf("O código da cidade é: %S \n", cardCode);
-    printf("A população da cidade é: %d \n", population);
-    printf("A área da cidade é:%.2f km quadrados \n", area);
-    printf("O PIB da cidade é: %.2f \n", pib);
-    printf("A quantidade de pontos turísticos é: %d \n", touristPoint);
-    printf("A densidade da cidade é: %.2f\n", DivideNumbers(population, area));
-    printf("O PIB per capita da cidade é: %f\n", DivideNumbers(pib, population));
+    float result = population + area + pib + touristPoint + pibPerCapita - populationDensity;
+
+    return result;
+}
+
+void ShowCardAttributes(struct Card card)
+{
+    printf("\n");
+    printf("%s\n", card.cardName);
+    printf("O Estado é: %c\n", card.stateName);
+    printf("O Código é: %s\n", card.cityCode);
+    printf("O nome da cidade é: %s\n", card.cityName);
+    printf("A população da cidade é: %d\n", card.population);
+    printf("A área da cidade é : %.2f\n", card.area);
+    printf("O PIB da cidade é: %.2f\n", card.pib);
+    printf("A quantidade de pontos turísticos é: %d\n", card.touristPoints);
+    printf("O PIB per Capita da cidade é: %.2f\n", card.pibPerCapita);
+    printf("A densidade da cidade é: %.2f\n", card.populationDensity);
+}
+
+struct Card FillCardAttributes(char cardName[], struct Card card)
+{
+    strcpy(card.cardName, cardName);
+    printf("%s\n", &card.cardName);
+
+    printf("Digite a primeira letra do seu estado: ");
+    scanf(" %c", &card.stateName);
+
+    printf("Digite um número de 01 à 04: ");
+    scanf("%s", &card.cityCode);
+
+    printf("Digite o primeiro nome da sua cidade: ");
+    scanf("%s", &card.cityName);
+
+    printf("Digite o número de habitantes da sua cidade: ");
+    scanf("%d", &card.population);
+
+    printf("Digite a área da sua cidade: ");
+    scanf("%f", &card.area);
+
+    printf("Digite o PIB da sua cidade: ");
+    scanf("%f", &card.pib);
+
+    printf("Digite a quantidade de pontos túristicos existentes na sua cidade: ");
+    scanf("%d", &card.touristPoints);
+
+    card.populationDensity = DivideNumbers(card.population, card.area);
+    card.pibPerCapita = DivideNumbers(card.pib, card.population);
+    card.superPower = card.population + card.area + card.pib + card.touristPoints + card.pibPerCapita - card.populationDensity;
+
+    return card;
+}
+
+void CompareCards(struct Card card1, struct Card card2)
+{
+    printf("Comparação: \n ");
+    printf("População: %s venceu\n ", card1.population > card2.population ? card1.cardName : card2.cardName);
+    printf("Área: %s venceu\n ", card1.area > card2.area ? card1.cardName : card2.cardName);
+    printf("PIB: %s venceu\n ", card1.pib > card2.pib ? card1.cardName : card2.cardName);
+    printf("Quantidade de pontos turísticos: %s venceu\n ", card1.touristPoints > card2.touristPoints ? card1.cardName : card2.cardName);
+    printf("PIB per Capita: %s venceu\n", card1.pibPerCapita > card2.pibPerCapita ? card1.cardName : card2.cardName);
+    printf("Densidade Populacional: %s venceu\n", card1.populationDensity > card2.populationDensity ? card1.cardName : card2.cardName);
+    printf("Super Poder: %s venceu\n", card1.superPower > card2.superPower ? card1.cardName : card2.cardName);
+
+    printf("\n Fim da batalha");
 }
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    #pragma region Valores da Carta1
-    char firstCardState;
-    char firstCardCityName[50];
-    char firstCardCityCode[50];
-    int firstCardPopulationValue;
-    float firstCardAreaValue;
-    float firstCardPIBValue;
-    int firstCardTouristPoints;
-
-    #pragma endregion
-
-    #pragma region Valoed da Carta2
-    char secondCardState;
-    char secondCardCityName[50];
-    char secondCardCityCode[50];
-    int secondCardPopulationValue;
-    float secondCardAreaValue;
-    float secondCardPIBValue;
-    int secondCardTouristPoints;
-    #pragma endregion
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-
-    #pragma region Atribuicoes da Carta1
-    
-    printf("Carta1\n");
-
-    printf("Digite A letra do seu estado: \n");
-    scanf(" %c", &firstCardState);
-
-    printf("Digite o nome da sua cidade: \n");
-    scanf(" %s", &firstCardCityName);
-
-    printf("\n Digite o código da sua cidade: \n");
-    scanf("%s", &firstCardCityCode);
-
-    printf("\nDigite a população da sua cidade: \n");
-    scanf("%d", &firstCardPopulationValue);
-    
-    printf("\nDigite a área da sua cidade: \n");
-    scanf("%f", &firstCardAreaValue);
-
-    printf("\nDigite o PIB da sua cidade: \n");
-    scanf("%f", &firstCardPIBValue);
-
-    printf("\nDigite o número de pontos turísticos da sua cidade: \n");
-    scanf("%d", &firstCardTouristPoints);
-
    
+    //Definição das cartas
+    struct Card card1;
+    struct Card card2;
 
-    #pragma endregion
+    //Preenchimento dos atributos
+    card1 = FillCardAttributes("Carta 1", card1);
+    card2 = FillCardAttributes("Carta 2", card2);
 
-    #pragma region Atribuicoes da Carta2
+    //Mostra os atributos que o jogador preencheu
+    ShowCardAttributes(card1);
+    ShowCardAttributes(card2);
 
-    printf("\nCarta2\n");
+    //Compara as cartas
+    printf("\n");
+    CompareCards(card1, card2);
 
-    printf("Digite A letra do seu estado: \n");
-    scanf(" %c", &secondCardState);
-
-    printf("Digite o nome da sua cidade: \n");
-    scanf(" %s", &secondCardCityName);
-
-    printf("\n Digite o código da sua cidade: \n");
-    scanf("%s", &secondCardCityCode);
-
-    printf("\nDigite a população da sua cidade: \n");
-    scanf("%d", &secondCardPopulationValue);
-    
-    printf("\nDigite a área da sua cidade: \n");
-    scanf("%f", &secondCardAreaValue);
-
-    printf("\nDigite o PIB da sua cidade: \n");
-    scanf("%f", &secondCardPIBValue);
-
-    printf("\nDigite o número de pontos turísticos da sua cidade: \n");
-    scanf("%d", &secondCardTouristPoints);
-
-    
-
-    #pragma endregion
-
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-
-    ShowCardAttributes("Carta 1", firstCardState, firstCardCityName, firstCardCityCode, firstCardPopulationValue, firstCardAreaValue, firstCardPIBValue, firstCardTouristPoints);
-    ShowCardAttributes("Carta 2", secondCardState, secondCardCityName, secondCardCityCode, secondCardPopulationValue, secondCardAreaValue, secondCardPIBValue, secondCardTouristPoints);
-
-    printf("\nQue a batalha Comece!\n\n");
     return 0;
 }
